@@ -2,9 +2,9 @@
 Library  SeleniumLibrary
 Library  ../ExternalKeywords/pythonFunctions.py
 Documentation  This is example of adding documentation for file level
+Library  ../ExternalKeywords/locators.py
 
 *** Variables ***
-${searchBox}  name:q
 ${Browser}  Chrome
 ${url}  http://www.google.com
 
@@ -15,8 +15,8 @@ Enter text in google search box
 
     # Timeout is to specify the time within which the keyword must be completed. If exceeded will throw error
     [Timeout]  40s
-
-    input text  ${searchBox}  ${value}
+    ${locator}=  read_locator_from_json  searchBox
+    input text  name:${locator}  ${value}
 
     # To return a value
     # [Return]  ${value}
@@ -35,3 +35,7 @@ stop browser
 Using python functions from external keywords
     [Arguments]  ${file_path}
     create_folder  ${file_path}
+
+Locator from json
+    [Arguments]  ${value}
+    read_locator_from_json  ${value}

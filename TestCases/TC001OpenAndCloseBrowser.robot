@@ -1,7 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
 Resource  ../Resources/ResourceFiles.robot
-
 Test Setup  Init Browser
 Test Teardown  stop browser
 
